@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soccer_news/models/movie.dart';
 
 class MovieDetail extends StatelessWidget {
   final movie;
@@ -10,7 +11,7 @@ class MovieDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     String path;
     if (movie.posterPath != null) {
-      path = imageUrl + movie.posterPath;
+      path = imageUrl + movie.posterPath; //didapat dari models movie
     } else {
       path = 'https://www.freeiconspng.com/uploads/no-image-icon-11.PNG';
     }
