@@ -40,5 +40,11 @@ ___
 ![image](https://user-images.githubusercontent.com/75615789/188798265-3910b89f-2100-4bd1-94fd-af8c9e667b51.png)
 
 ## Membuat halaman detail Populer Movie 
+```
+1. Untuk membuat perpindahan dari movie list ke movie detail buatlah onTap event di listview pada movie list
+2. Pada event on tap Widget MovieDetail belum dibuat, buatlah widget ini pada folder pages/movie_detail.dart
+3. Lengkapi Movie Detail untuk menerima parameter Movies 
+```
+![image](https://user-images.githubusercontent.com/75615789/188800654-f62285b1-e985-4d3d-a647-71de4c85b9cf.png)
 
 
