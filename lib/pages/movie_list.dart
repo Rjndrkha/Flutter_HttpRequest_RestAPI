@@ -7,28 +7,47 @@ class MovieList extends StatefulWidget {
 }
 
 class _MovieListState extends State<MovieList> {
-  String result = "";
+  int moviesCount = 0;
+  List movies = [];
   HttpService service = HttpService();
+
+  Future initialize() async {
+    movies = [];
+    movies = await service.getUpcomingMovies();
+    setState(() {
+      moviesCount = movies.length;
+      movies = movies;
+    });
+  }
 
   @override
   void initState() {
     service = HttpService();
+    initialize();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    service.getUpcomingMovies().then((value) => {
-          setState(() {
-            result = value;
-          })
-        });
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Movie List'),
+        title: Text('Popular Movies'),
       ),
-      body: Center(
-        child: Text(result),
+      body: ListView.builder(
+        //itemCount: (this.moviesCount == null) ? 0 : this.moviesCount,
+        itemCount: moviesCount,
+        itemBuilder: (context, int position) {
+          return Card(
+            color: Colors.white,
+            elevation: 2.0,
+            child: ListTile(
+              title: Text(movies[position].title),
+              subtitle: Text(
+                'Rating = ' + movies[position].voteAverage.toString(),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
